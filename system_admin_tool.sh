@@ -9,9 +9,9 @@ case $option in
 1)
 read -p "Enter the Username to add " username
 sudo useradd $username
-echo "***********************************************
+echo "***********************************************"
 echo "User $username added successfully"
-echo "***********************************************
+echo "***********************************************"
 ;;
 esac
 
