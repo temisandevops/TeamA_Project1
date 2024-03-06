@@ -16,8 +16,8 @@ echo "***********************************************"
 esac
 case $option in
 2)
-read -p "Enter the Username to delete " username      
-sudo userdel $username						                
+read -p "Enter the Username to delete " username
+sudo userdel $username
 echo "***********************************************"
 echo "User $username deleted successfully"
 echo "***********************************************"
