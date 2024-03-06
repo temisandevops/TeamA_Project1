@@ -14,4 +14,12 @@ echo "User $username added successfully"
 echo "***********************************************"
 ;;
 esac
-
+case $option in
+2)
+read -p "Enter the Username to delete " username      
+sudo userdel $username						                
+echo "***********************************************"
+echo "User $username deleted successfully"
+echo "***********************************************"
+;;
+esac
