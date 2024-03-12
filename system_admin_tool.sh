@@ -14,24 +14,22 @@ read -p "Enter 1 to add user | Enter 2 to delete user | Enter 3 to list user| En
 case $option in
 1)
 read -p "Enter the Username to add " username
-	@@ -14,6 +15,7 @@ echo "User $username added successfully"
+echo "User $username added successfully"
 echo "***********************************************"
 ;;
 esac
 
-#Implement the deletion of a user account, and provide appropriate feedback. Notify 
-Nancy once done
+#Implement the deletion of a user account, and provide appropriate feedback. Notify Nancy once done
 
 case $option in
 2)
 read -p "Enter the Username to delete " username
-	@@ -23,3 +25,13 @@ echo "User $username deleted successfully"
+echo "User $username deleted successfully"
 echo "***********************************************"
 ;;
 esac
 
-#Enhance the script to list all existing users using the cut command. Notify 
-Maryspear once done.
+#Enhance the script to list all existing users using the cut command. Notify Maryspear once done.
 
 case $option in
 3)
@@ -64,28 +62,23 @@ echo "Password set successfully for user $specified_user"
 #Add code to unlock a user account if it was locked. Ensure proper notification is 
 provided
 
-
 # Check if the script is run with root privileges
 if [ "$(id -u)" -ne 0 ]; then
     echo "This script must be run as root" >&2
     exit 1
 fi
-
 # Check if a username is provided as an argument
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <username>"
     exit 1
 fi
-
 # Get the username from the argument
 username=$1
-
 # Check if the user exists
 if ! id "$username" &>/dev/null; then
     echo "User $username does not exist"
     exit 1
 fi
-
 # Check if the user is already unlocked
 if passwd -S "$username" | grep -q 'Password locked'; then
     # Unlock the user account
@@ -94,7 +87,7 @@ if passwd -S "$username" | grep -q 'Password locked'; then
 else
     echo "User $username is already unlocked"
 fi
-
+echo "***********************************************"
 
 
 
