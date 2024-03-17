@@ -59,8 +59,7 @@ EOF
 echo "Password set successfully for user $specified_user"
 
 
-#Add code to unlock a user account if it was locked. Ensure proper notification is 
-provided
+#Add code to unlock a user account if it was locked. Ensure proper notification is provided
 
 # Check if the script is run with root privileges
 if [ "$(id -u)" -ne 0 ]; then
