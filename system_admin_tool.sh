@@ -42,55 +42,6 @@ echo "***********************************************"
 esac
 
 
-#Add functionality to add a sudo password for a specified user using sudo passwd
-read -p "Enter the username to set a password: " specified_user
-echo
-
-# Read the password silently
-read -s -p "Enter password: " password
-echo
-
-# Use a heredoc to pass the password to sudo passwd without echoing it
-sudo passwd $specified_user --stdin <<EOF
-$password
-$password
-EOF
-
-echo "Password set successfully for user $specified_user"
-
-
-#Add code to unlock a user account if it was locked. Ensure proper notification is provided
-
-# Check if the script is run with root privileges
-if [ "$(id -u)" -ne 0 ]; then
-    echo "This script must be run as root" >&2
-    exit 1
-fi
-# Check if a username is provided as an argument
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <username>"
-    exit 1
-fi
-# Get the username from the argument
-username=$1
-# Check if the user exists
-if ! id "$username" &>/dev/null; then
-    echo "User $username does not exist"
-    exit 1
-fi
-# Check if the user is already unlocked
-if passwd -S "$username" | grep -q 'Password locked'; then
-    # Unlock the user account
-    passwd -u "$username"
-    echo "User $username has been unlocked"
-else
-    echo "User $username is already unlocked"
-fi
-echo "***********************************************"
-
-
-
-
 
 
 
